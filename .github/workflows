@@ -1,21 +1,17 @@
-name: Say Hello
-
-on: 
-  push:
-    branches:
-      - main  # или ваша основная ветка
-
+# file: .github/workflows/show-directory.yml
+name: show-directory
+# on – определяет события, которые запускают воркфлоу
+on: push
 jobs:
-  say-hello:
+  # build – произвольно выбранное имя задания
+  # их может быть больше одного
+  build:
+    # операционная система для работы воркфлоу
     runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Make
-      run: sudo apt-get install make
-
-    - name: Run say-hello
-      run: make say-hello
-
+    steps: # список шагов, которые надо выполнить
+      # экшен — выполняет какую-то задачу
+      # checkout — клонирует репозиторий
+      - uses: actions/checkout@v4
+      # run – произвольная bash-команда
+      # ls -la выведет содержимое текущего репозитория
+      - run: ls -la
